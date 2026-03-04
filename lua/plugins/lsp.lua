@@ -21,6 +21,8 @@ return {
       },
     },
     config = function(_, opts)
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       vim.diagnostic.config({
         underline = true,
         virtual_text = { prefix = "●" },
@@ -48,6 +50,7 @@ return {
 
       for server, config in pairs(opts.servers) do
         config.on_attach = on_attach
+        config.capabilities = capabilities
         require("lspconfig")[server].setup(config)
       end
     end,
