@@ -12,10 +12,4 @@ vim.g.root_spec = { "cwd" }
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
--- Hack for neovim cmd+c
-vim.keymap.set(
-    {'n', 'v', 's', 'x', 'o', 'i', 'l', 'c', 't'},
-    '<D-v>',
-    function() vim.api.nvim_paste(vim.fn.getreg('+'), true, -1) end,
-    { noremap = true, silent = true }
-)
+vim.opt.clipboard = "unnamedplus"

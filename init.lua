@@ -2,4 +2,5 @@
 require("config.lazy")
 
 vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
 
