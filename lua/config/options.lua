@@ -13,3 +13,7 @@ vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.keymap.set({ "n", "v", "x" }, "<D-c>", '"+y', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x" }, "<D-x>", '"+d', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x", "i", "c" }, "<D-v>", '"+P', { noremap = true, silent = true })
