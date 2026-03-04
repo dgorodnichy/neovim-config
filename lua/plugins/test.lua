@@ -3,6 +3,7 @@ return {
   lazy = true,
   dependencies = {
     "olimorris/neotest-rspec",
+    "nvim-lua/plenary.nvim",
   },
   config = function()
     require("neotest").setup({
