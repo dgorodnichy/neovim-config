@@ -7,6 +7,13 @@ return {
           mason = false,
           cmd = { vim.fn.trim(vim.fn.system("which ruby-lsp")) },
           root_markers = { ".git", "Gemfile" },
+          init_options = {
+            addonSettings = {
+              ["Ruby LSP Rails"] = {
+                enablePendingMigrationsPrompt = false,
+              },
+            },
+          },
         },
       },
     },
