@@ -15,6 +15,7 @@ vim.g.lazyvim_ruby_formatter = "rubocop"
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.signcolumn = "yes"
+vim.opt.whichwrap:append("<>[]hl")
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 16
 vim.opt.cursorline = true
