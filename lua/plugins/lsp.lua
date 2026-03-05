@@ -1,23 +1,8 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ruby_lsp = {
-          mason = false,
-          cmd = { vim.fn.trim(vim.fn.system("which ruby-lsp")) },
-          root_markers = { ".git", "Gemfile" },
-          init_options = {
-            addonSettings = {
-              ["Ruby LSP Rails"] = {
-                enablePendingMigrationsPrompt = false,
-              },
-            },
-          },
-        },
-      },
-    },
-    config = function(_, opts)
+    opts = {},
+    config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       vim.diagnostic.config({
@@ -45,11 +30,31 @@ return {
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer = bufnr, desc = "Next diagnostic" })
       end
 
-      for server, config in pairs(opts.servers) do
-        config.on_attach = on_attach
-        config.capabilities = capabilities
-        require("lspconfig")[server].setup(config)
-      end
+      local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
+
+      local root = util.root_pattern("Gemfile", ".git")(vim.fn.expand("%:p")) or vim.fn.getcwd()
+
+      local ruby_lsp_config = {
+        cmd = { vim.fn.trim(vim.fn.system("which ruby-lsp")) },
+        cmd_cwd = root,
+        filetypes = { "ruby", "eruby" },
+        root_markers = { "Gemfile", ".git" },
+        on_attach = on_attach,
+        capabilities = capabilities,
+        init_options = {
+          formatter = "standard",
+          linters = { "standard" },
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
+          },
+        },
+      }
+
+      vim.lsp.config("ruby_lsp", ruby_lsp_config)
+      vim.lsp.enable("ruby_lsp")
     end,
   },
 }
