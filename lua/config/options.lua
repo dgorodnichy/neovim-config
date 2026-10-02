@@ -5,7 +5,7 @@
 vim.opt.relativenumber = false
 vim.opt.termguicolors = true
 vim.g.autoformat = false
-vim.lsp.set_log_level(vim.log.levels.WARN)
+vim.lsp.log.set_level(vim.log.levels.WARN)
 
 vim.g.root_spec = { "cwd" }
 
