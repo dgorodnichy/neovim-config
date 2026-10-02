@@ -10,10 +10,7 @@ return {
       adapters = {
         require("neotest-rspec")({
           rspec_cmd = function()
-            return vim.tbl_flatten({
-              "dip",
-              "rspec",
-            })
+            return { "dip", "rspec" }
           end,
 
           transform_spec_path = function(path)

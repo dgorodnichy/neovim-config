@@ -3,7 +3,6 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = false
-vim.opt.termguicolors = true
 vim.g.autoformat = false
 vim.lsp.log.set_level(vim.log.levels.WARN)
 
@@ -14,7 +13,6 @@ vim.g.lazyvim_ruby_formatter = "rubocop"
 
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.signcolumn = "yes"
 vim.opt.whichwrap:append("<>[]hl")
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 16
@@ -22,4 +20,5 @@ vim.opt.cursorline = true
 
 vim.keymap.set({ "n", "v", "x" }, "<D-c>", '"+y', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v", "x" }, "<D-x>", '"+d', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v", "x", "i", "c" }, "<D-v>", '"+P', { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x" }, "<D-v>", '"+P', { noremap = true, silent = true })
+vim.keymap.set({ "i", "c" }, "<D-v>", "<C-r>+", { noremap = true, silent = true })

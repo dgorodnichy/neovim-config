@@ -4,12 +4,10 @@ return {
     opts = {
         style = "moon",
         terminal_colors = true,
-        comments = { italic = true },
-        keywords = { italic = true },
-        code_style = {
-          comments = "italic",
-          keywords = "bold",
-          functions = "bold",
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = { bold = true },
         },
         on_highlights = function(hl, c)
           hl.Visual = {
